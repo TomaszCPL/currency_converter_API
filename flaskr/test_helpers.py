@@ -3,10 +3,6 @@ import helpers
 
 class test_helpers(unittest.TestCase):
 
-    #
-    # def tearDown(self):
-    #     pass
-
     def test_occurenceOfSymbol(self):
         self.assertEqual(helpers.occurenceOfSymbol('$'),'USD')
         self.assertEqual(helpers.occurenceOfSymbol('USD'), False)
@@ -19,17 +15,13 @@ class test_helpers(unittest.TestCase):
         self.assertEqual(helpers.validateCurrency('AUD,USD'), 'http://api.fixer.io/latest')
         self.assertEqual(helpers.validateCurrency('AUD'), True)
 
+    def test_buildRequest(self):
+        result = helpers.buildRequest('USD','$')
+        self.assertIn('http://api.fixer.io/latest?base=USD&symbols=$', result)
+
      # def test_getcurrencyExchangeRates(self):
          # pass
 
-
-     # def buildRequest(base, symbol):
-     #     baseUrl = 'http://api.fixer.io/latest'
-     #     url = (baseUrl + '?base=' + base)
-     #     if symbol:
-     #         url += ('&symbols=' + symbol)
-     #     return url
-     #
 
 # def getcurrencyExchangeRates(base, symbol):
 #     url = buildRequest(base, symbol)
@@ -37,7 +29,7 @@ class test_helpers(unittest.TestCase):
 #         response = requests.get(url)
 #         response.status_code
 #     except requests.exceptions.HTTPError:
-#         print('Error occured while downloading Exchange rates')
+#         print('Error occure.d while downloading Exchange rates')
 #     except requests.exceptions.URLError:
 #         print('Error occured while downloading Exchange rates')
 #     currencyExchangeRatesJSON = response.text
