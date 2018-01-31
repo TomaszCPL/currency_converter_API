@@ -2,9 +2,7 @@ import unittest
 import helpers
 
 class test_helpers(unittest.TestCase):
-    #
-    # def setUp(self):
-    #     pass
+
     #
     # def tearDown(self):
     #     pass
@@ -17,8 +15,21 @@ class test_helpers(unittest.TestCase):
         self.assertEqual(helpers.validateCurrency('AUD'),True)
         self.assertEqual(helpers.validateCurrency('Something'), False)
 
-    # def test_getcurrencyExchangeRates(self):
-    #     pass
+    def test_buildRequest(self):
+        self.assertEqual(helpers.validateCurrency('AUD,USD'), 'http://api.fixer.io/latest')
+        self.assertEqual(helpers.validateCurrency('AUD'), True)
+
+     # def test_getcurrencyExchangeRates(self):
+         # pass
+
+
+     # def buildRequest(base, symbol):
+     #     baseUrl = 'http://api.fixer.io/latest'
+     #     url = (baseUrl + '?base=' + base)
+     #     if symbol:
+     #         url += ('&symbols=' + symbol)
+     #     return url
+     #
 
 # def getcurrencyExchangeRates(base, symbol):
 #     url = buildRequest(base, symbol)

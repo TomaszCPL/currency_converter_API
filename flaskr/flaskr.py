@@ -3,6 +3,9 @@ from flask_api import FlaskAPI
 import json
 import requests
 import requests.exceptions
+from flask import request
+
+
 
 def occurenceOfSymbol(symbol):
     listOfSymbols = {'лв':'BGN','R$':'RBL',
@@ -46,17 +49,25 @@ def getcurrencyExchangeRates(base, symbol):
     currencyExchangeRates = json.loads(currencyExchangeRatesJSON)
     return currencyExchangeRates
 
+# @app.route('/my-route')
+# def my_route():
+#   page = request.args.get('page', default = 1, type = int)
+#   filter = request.args.get('filter', default = '*', type = str)
+#
+
 app = FlaskAPI('flaskr')
-# /currency_converter?amount=0.9&input_currency=¥&output_currency=AUD
-@app.route('/currency_converter/amount=<amount>&input_currency=<input>',methods =['GET'])
-@app.route('/currency_converter/amount=<amount>&input_currency=<input>&output_currency=<output>',methods =['GET'])
-def currency_converter(amount, input,output=None):
+@app.route('/currency_converter')
+def currency_converter():
+    amount = request.args.get('amount', default= None, type = float)
+    input = request.args.get('input_currency', default = None, type = str)
+    output = request.args.get('output_currency', default= None, type = str)
+
     if occurenceOfSymbol(input):
         input = occurenceOfSymbol(input)
     if occurenceOfSymbol(output):
         output= occurenceOfSymbol(output)
-    if validateCurrency(input) == False:
-        return("Incorrect input.You must enter valid currency symbol.")
+    # if validateCurrency(input) == False:
+    #     return("Incorrect input.You must enter valid currency symbol.")
     if (output != None):
         if validateCurrency(output) == False:
             return ("Incorrect output.You must enter valid currency symbol.")
