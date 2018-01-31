@@ -1,9 +1,8 @@
 # currency_converter_API
 
 #Getting started
+
 'pip3 install -r requirements.txt'
-
-
 
 ## Parameters
 - Amount - amount which we want to convert - float
