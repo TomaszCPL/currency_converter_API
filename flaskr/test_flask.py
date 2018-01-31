@@ -1,10 +1,10 @@
 import unittest
-from flaskr import flaskr
+from flaskr import converter_flask
 
 class test_flaskApp(unittest.TestCase):
     def setUp(self):
-        flaskr.app.testing = True
-        self.app = flaskr.app.test_client()
+        converter_flask.app.testing = True
+        self.app = converter_flask.app.test_client()
 
     def test_request_code(self):
         resultFirstCase = self.app.get('/currency_converter?amount=10.92&input_currency=£')
