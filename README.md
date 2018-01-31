@@ -2,11 +2,11 @@
 My solution to Kiwi.com task.I've decided to use Flask due to the simplicity of the project. 
 
 ## Getting started
-I.Install all the dependencies from the requirements.txt file with following command:
+Install all the dependencies from the requirements.txt file with following command:
 
 ` pip3 install -r requirements.txt `
 
-II.Run Flask app and generate GET request. 
+Run Flask app and generate GET request. 
 
 ## Parameters
 You will need to provide:
