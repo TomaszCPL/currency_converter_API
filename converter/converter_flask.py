@@ -1,8 +1,9 @@
 from flask_api import FlaskAPI
 from flask import request
+import converter
 from converter_helpers import occurenceOfSymbol, validateCurrency, getcurrencyExchangeRates
 
-app = FlaskAPI('flaskr')
+app = FlaskAPI('converter')
 @app.route('/currency_converter')
 def currency_converter():
     amount = request.args.get('amount', type = float)

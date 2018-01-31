@@ -1,5 +1,5 @@
 import unittest
-from flaskr import converter_flask
+from converter import converter_flask
 
 class test_flaskApp(unittest.TestCase):
     def setUp(self):
